@@ -92,6 +92,50 @@
     <div class="mt-8 pt-8 border-t border-gray-200 text-center text-xs text-gray-500">
       © 2026 HARK_PLACEHOLDER. All rights reserved.
     </div>
+
+    <!-- Place this near the bottom of <body>, before </footer> -->
+<div id="login-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50" role="dialog" aria-modal="true">
+  <div class="bg-white rounded-xl p-8 w-full max-w-md shadow-xl transform scale-95 opacity-0 transition-all duration-300 ease-out" style="opacity:1">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Sign in</h2>
+    <form id="login-form" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+        <input type="email" name="email" required class="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="you@example.com">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+        <input type="password" name="password" required class="w-full px-3 py-2 border rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="••••••••">
+      </div>
+      <button type="submit"
+              class="w-full py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+        Sign in
+      </button>
+    </form>
+    <p class="text-center text-sm text-gray-500 mt-4">Don’t have an account? <a href="#" class="font-medium underline">Sign up</a></p>
+  </div>
+
+  <script>
+    // Very simple toggle for the modal (no real auth back‑end)
+    const modal = document.getElementById('login-modal');
+    const loginBtn = document.querySelector('.btn-sign-in'); // your existing nav button
+    if (loginBtn) {
+      loginBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('block');
+      });
+    }
+    // Close on overlay click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+    // Simple form submit – just hide the modal for demo purposes
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      modal.classList.add('hidden');
+      alert('Login simulated – placeholder only');
+    });
+  </script>
+</div>
   </footer>
 
   <script src="script.js"></script>
